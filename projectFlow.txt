@@ -1,0 +1,29 @@
+1. Create Index.html and style.css to display inital question.
+
+2. Write questions
+
+3. Display question by question 
+
+4. Create a start game function
+
+5. Create displayNextQuestion function
+
+6. Create a countdown timer
+
+7. Count set at 60, count -= 1
+
+
+
+ANSWER QUESTION:
+1. if choice is wrong, subtract time by 10seconds.
+2. display the next question
+
+How to create a question:
+
+var queastions: [
+
+// Key Pairs
+question: "string"
+answers: ["ans1" , "ans2", "ans3","ans4"],
+correct:"answer"
+]
