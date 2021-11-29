@@ -36,7 +36,6 @@ const nextQuestion = function () {
 };
 
 const clearPage = function () {
-  // document.getElementById("main-content").innerHTML = "";
   document.body.innerHTML = "";
 };
 
@@ -70,13 +69,13 @@ const addQuestion3 = function () {
   const addAQuestion3 = document.createElement("h2");
   document.body.appendChild(addAQuestion3);
   addAQuestion3.textContent = questions[2].question;
-  addSecondAnswers();
+  addThirdAnswers();
 };
 const addQuestion4 = function () {
   const addAQuestion4 = document.createElement("h2");
   document.body.appendChild(addAQuestion4);
   addAQuestion4.textContent = questions[3].question;
-  addSecondAnswers();
+  addFourthAnswers();
 };
 
 const addFirstAnswers = function () {
@@ -90,19 +89,21 @@ const addFirstAnswers = function () {
   const addAnAnswer4 = document.createElement("button");
   const addAnAnswerLabel4 = document.createElement("h3");
 
-  document.body.appendChild(addAnAnswerLabel1);
-  document.body.appendChild(addAnAnswer1);
-  document.body.appendChild(addAnAnswerLabel2);
-  document.body.appendChild(addAnAnswer2);
-  document.body.appendChild(addAnAnswerLabel3);
-  document.body.appendChild(addAnAnswer3);
-  document.body.appendChild(addAnAnswerLabel4);
-  document.body.appendChild(addAnAnswer4);
+  document.body.append(addDiv);
+  addDiv.appendChild(addAnAnswerLabel1);
+  addDiv.appendChild(addAnAnswer1);
+  addDiv.appendChild(addAnAnswerLabel2);
+  addDiv.appendChild(addAnAnswer2);
+  addDiv.appendChild(addAnAnswerLabel3);
+  addDiv.appendChild(addAnAnswer3);
+  addDiv.appendChild(addAnAnswerLabel4);
+  addDiv.appendChild(addAnAnswer4);
 
   addAnAnswer1.setAttribute("id", "Answer1");
   addAnAnswer2.setAttribute("id", "Answer2");
   addAnAnswer3.setAttribute("id", "Answer3");
   addAnAnswer4.setAttribute("id", "Answer4");
+  addDiv.setAttribute("class", "questions");
 
   addAnAnswerLabel1.textContent = "1.";
   addAnAnswer1.textContent = questions[0].answers[0];
@@ -121,7 +122,10 @@ const addFirstAnswers = function () {
     if (userInput.textContent === questions[0].correctAnswer) {
       clearPage();
       addQuestion2();
-      timer();
+      const addTimerClock = document.createElement("h1");
+      addTimerClock.setAttribute("id", "timer-clock");
+      document.body.appendChild(addTimerClock);
+      //   updateCountdown();
     } else {
       var note2 = document.createElement("h5");
       document.body.appendChild(note2);
@@ -137,29 +141,30 @@ const addFirstAnswers = function () {
 };
 const addSecondAnswers = function () {
   const addDiv = document.createElement("div");
-  const addAnAnswerLabel1 = document.createElement("h3");
   const addAnAnswer1 = document.createElement("button");
-  const addAnAnswerLabel2 = document.createElement("h3");
+  const addAnAnswerLabel1 = document.createElement("h3");
   const addAnAnswer2 = document.createElement("button");
-  const addAnAnswerLabel3 = document.createElement("h3");
+  const addAnAnswerLabel2 = document.createElement("h3");
   const addAnAnswer3 = document.createElement("button");
-  const addAnAnswerLabel4 = document.createElement("h3");
+  const addAnAnswerLabel3 = document.createElement("h3");
   const addAnAnswer4 = document.createElement("button");
+  const addAnAnswerLabel4 = document.createElement("h3");
 
   document.body.append(addDiv);
-  document.body.appendChild(addAnAnswerLabel1);
-  document.body.appendChild(addAnAnswer1);
-  document.body.appendChild(addAnAnswerLabel2);
-  document.body.appendChild(addAnAnswer2);
-  document.body.appendChild(addAnAnswerLabel3);
-  document.body.appendChild(addAnAnswer3);
-  document.body.appendChild(addAnAnswerLabel4);
-  document.body.appendChild(addAnAnswer4);
+  addDiv.appendChild(addAnAnswerLabel1);
+  addDiv.appendChild(addAnAnswer1);
+  addDiv.appendChild(addAnAnswerLabel2);
+  addDiv.appendChild(addAnAnswer2);
+  addDiv.appendChild(addAnAnswerLabel3);
+  addDiv.appendChild(addAnAnswer3);
+  addDiv.appendChild(addAnAnswerLabel4);
+  addDiv.appendChild(addAnAnswer4);
 
   addAnAnswer1.setAttribute("id", "Answer1");
   addAnAnswer2.setAttribute("id", "Answer2");
   addAnAnswer3.setAttribute("id", "Answer3");
   addAnAnswer4.setAttribute("id", "Answer4");
+  addDiv.setAttribute("class", "questions");
 
   addAnAnswerLabel1.textContent = "1.";
   addAnAnswer1.textContent = questions[1].answers[0];
@@ -170,9 +175,33 @@ const addSecondAnswers = function () {
   addAnAnswerLabel4.textContent = "4.";
   addAnAnswer4.textContent = questions[1].answers[3];
 
-  timer();
+  document.body.classList.add("question-container");
+  const clickAnswer = function (event) {
+    var userInput = event.target;
+    console.log(userInput);
+
+    if (userInput.textContent === questions[1].correctAnswer) {
+      clearPage();
+      addQuestion3();
+      //   updateCountdown();
+      const addTimerClock = document.createElement("h1");
+      addTimerClock.setAttribute("id", "timer-clock");
+      document.body.appendChild(addTimerClock);
+    } else {
+      var note2 = document.createElement("h5");
+      document.body.appendChild(note2);
+      note2.textContent = "Incorrect";
+      note2.style.color = "red";
+      seconds -= 10;
+    }
+  };
+  addAnAnswer1.onclick = clickAnswer;
+  addAnAnswer2.onclick = clickAnswer;
+  addAnAnswer3.onclick = clickAnswer;
+  addAnAnswer4.onclick = clickAnswer;
 };
 const addThirdAnswers = function () {
+  const addDiv = document.createElement("div");
   const addAnAnswer1 = document.createElement("button");
   const addAnAnswerLabel1 = document.createElement("h3");
   const addAnAnswer2 = document.createElement("button");
@@ -182,15 +211,21 @@ const addThirdAnswers = function () {
   const addAnAnswer4 = document.createElement("button");
   const addAnAnswerLabel4 = document.createElement("h3");
 
-  document.body.appendChild(addAnAnswer1);
-  document.body.appendChild(addAnAnswer2);
-  document.body.appendChild(addAnAnswer3);
-  document.body.appendChild(addAnAnswer4);
+  document.body.append(addDiv);
+  addDiv.appendChild(addAnAnswerLabel1);
+  addDiv.appendChild(addAnAnswer1);
+  addDiv.appendChild(addAnAnswerLabel2);
+  addDiv.appendChild(addAnAnswer2);
+  addDiv.appendChild(addAnAnswerLabel3);
+  addDiv.appendChild(addAnAnswer3);
+  addDiv.appendChild(addAnAnswerLabel4);
+  addDiv.appendChild(addAnAnswer4);
 
   addAnAnswer1.setAttribute("id", "Answer1");
   addAnAnswer2.setAttribute("id", "Answer2");
   addAnAnswer3.setAttribute("id", "Answer3");
   addAnAnswer4.setAttribute("id", "Answer4");
+  addDiv.setAttribute("class", "questions");
 
   addAnAnswerLabel1.textContent = "1.";
   addAnAnswer1.textContent = questions[2].answers[0];
@@ -200,8 +235,34 @@ const addThirdAnswers = function () {
   addAnAnswer3.textContent = questions[2].answers[2];
   addAnAnswerLabel4.textContent = "4.";
   addAnAnswer4.textContent = questions[2].answers[3];
+
+  document.body.classList.add("question-container");
+  const clickAnswer = function (event) {
+    var userInput = event.target;
+    console.log(userInput);
+
+    if (userInput.textContent === questions[2].correctAnswer) {
+      clearPage();
+      addQuestion4();
+      //   updateCountdown()
+      const addTimerClock = document.createElement("h1");
+      addTimerClock.setAttribute("id", "timer-clock");
+      document.body.appendChild(addTimerClock);
+    } else {
+      var note2 = document.createElement("h5");
+      document.body.appendChild(note2);
+      note2.textContent = "Incorrect";
+      note2.style.color = "red";
+      seconds -= 10;
+    }
+  };
+  addAnAnswer1.onclick = clickAnswer;
+  addAnAnswer2.onclick = clickAnswer;
+  addAnAnswer3.onclick = clickAnswer;
+  addAnAnswer4.onclick = clickAnswer;
 };
 const addFourthAnswers = function () {
+  const addDiv = document.createElement("div");
   const addAnAnswer1 = document.createElement("button");
   const addAnAnswerLabel1 = document.createElement("h3");
   const addAnAnswer2 = document.createElement("button");
@@ -210,15 +271,22 @@ const addFourthAnswers = function () {
   const addAnAnswerLabel3 = document.createElement("h3");
   const addAnAnswer4 = document.createElement("button");
   const addAnAnswerLabel4 = document.createElement("h3");
-  document.body.appendChild(addAnAnswer1);
-  document.body.appendChild(addAnAnswer2);
-  document.body.appendChild(addAnAnswer3);
-  document.body.appendChild(addAnAnswer4);
+
+  document.body.append(addDiv);
+  addDiv.appendChild(addAnAnswerLabel1);
+  addDiv.appendChild(addAnAnswer1);
+  addDiv.appendChild(addAnAnswerLabel2);
+  addDiv.appendChild(addAnAnswer2);
+  addDiv.appendChild(addAnAnswerLabel3);
+  addDiv.appendChild(addAnAnswer3);
+  addDiv.appendChild(addAnAnswerLabel4);
+  addDiv.appendChild(addAnAnswer4);
 
   addAnAnswer1.setAttribute("id", "Answer1");
   addAnAnswer2.setAttribute("id", "Answer2");
   addAnAnswer3.setAttribute("id", "Answer3");
   addAnAnswer4.setAttribute("id", "Answer4");
+  addDiv.setAttribute("class", "questions");
 
   addAnAnswerLabel1.textContent = "1.";
   addAnAnswer1.textContent = questions[3].answers[0];
@@ -228,38 +296,25 @@ const addFourthAnswers = function () {
   addAnAnswer3.textContent = questions[3].answers[2];
   addAnAnswerLabel4.textContent = "4.";
   addAnAnswer4.textContent = questions[3].answers[3];
+
+  document.body.classList.add("question-container");
+  const clickAnswer = function (event) {
+    var userInput = event.target;
+    console.log(userInput);
+
+    if (userInput.textContent === questions[3].correctAnswer) {
+      clearPage();
+      clearInterval();
+    } else {
+      var note2 = document.createElement("h5");
+      document.body.appendChild(note2);
+      note2.textContent = "Incorrect";
+      note2.style.color = "red";
+      seconds -= 10;
+    }
+  };
+  addAnAnswer1.onclick = clickAnswer;
+  addAnAnswer2.onclick = clickAnswer;
+  addAnAnswer3.onclick = clickAnswer;
+  addAnAnswer4.onclick = clickAnswer;
 };
-
-// WHEN I answer a question
-// 1. When a button is clicked, it acts as an answer
-// 2. Tell the user they have answered the question (Right or Wrong)
-// 3. Need to write questions for user to answer
-
-// THEN I am presented with another question
-// 1. After a button is clicked, I am directed to another question. (Repeate steps 2)
-// 2. When an answer is clicked, I need to clear the current page
-
-// WHEN I answer a question incorrectly
-// 1. Create logic defining which answers are right and wrong
-// 2. Tell the user they have answered incorrectly
-
-// THEN time is subtracted from the clock
-// 1. Take 10 seconds off the clock
-
-// WHEN all questions are answered or the timer reaches 0
-// 1. Timer stops at zero
-// 2. All the questions have been answered becuase we are at the end of our array(object)
-
-// THEN the game is over
-// 1. Display how many questions you got right.
-// 2. Create a button that asks them if they want to play again
-
-// WHEN the game is over
-// 1. Game over screen is shown
-// 2. Game over Screen says "Thanks for playing!"
-
-// THEN I can save my initials and my score
-// 1. Create a user input to add initals
-// 2. Store initals in local storage
-// 3. Score will be how many seconds left on the clock
-// 4. If score is higher than last, display "HIGH SCORE!!!!!!"

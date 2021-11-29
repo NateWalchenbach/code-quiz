@@ -4,9 +4,42 @@
 }
 body {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-content: center;
+  overflow-x: hidden;
 }
+.header {
+  width: 100%;
+  height: 10rem;
+  color: yellow;
+}
+#timer-clock {
+  display: flex;
+  font-size: xx-large;
+  background-color: rgb(90, 90, 95);
+  border-radius: 8%;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: bold;
+}
+.question-container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  height: 20rem;
+  background-color: rgb(117, 117, 124);
+  width: 100%;
+}
+.questions {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  height: 20rem;
+  background-color: rgb(117, 117, 124);
+  width: 100%;
+}
+
 .start-page {
   display: flex;
   flex-direction: column;
