@@ -305,6 +305,7 @@ const addFourthAnswers = function () {
     if (userInput.textContent === questions[3].correctAnswer) {
       clearPage();
       clearInterval();
+      gameOver();
     } else {
       var note2 = document.createElement("h5");
       document.body.appendChild(note2);
@@ -318,3 +319,22 @@ const addFourthAnswers = function () {
   addAnAnswer3.onclick = clickAnswer;
   addAnAnswer4.onclick = clickAnswer;
 };
+
+const gameOver = function () {
+  if (seconds > 1) {
+    const gameOverMessage = document.createElement("h1");
+    const submitName = document.createElement("form");
+    const textInput = document.createElement("textarea");
+    textInput.setAttribute("id", "textfield");
+    document.getElementById("textField").document.body.append(gameOverMessage);
+    document.body.appendChild(submitName);
+    submitName.appendChild(textInput);
+    gameOverMessage.textContent = `Congratulations you finished the game with time ${seconds} seconds left!`;
+    document.body.style.background = "green";
+  } else {
+    const gameOverMessage = document.createElement("h1");
+    document.body.appendChild(gameOverMessage);
+    gameOverMessage.textContent = "You ran out of time!";
+  }
+};
+var timeLeft = localStorage.setItem(seconds);
